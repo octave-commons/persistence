@@ -6,3 +6,4 @@ export * from './maintenance.js';
 export * from './unified-indexing-api.js';
 export * from './unified-content-model.js';
 export * from './actions/context-store/types.js';
+export type { GenericEntry } from './actions/context-store/utils.js';

@@ -47,7 +47,7 @@ export const insert = async <TextKey extends string, TimeKey extends string>(
                 ...baseMetadata,
                 [state.timeStampKey]: epochTimestamp,
             });
-            await chroma.queue.add(entryId, textValue, chromaMetadata);
+            await chroma.queue.add(entryId, textValue, chromaMetadata as Record<string, string | number | boolean | null>);
         } catch (error) {
         vectorWriteSuccess = false;
         vectorWriteError = error instanceof Error ? error : new Error(String(error));
