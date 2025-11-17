@@ -32,7 +32,6 @@
     "module": "dist/index.js",
     "dependencies": {
         "@promethean-os/embedding": "workspace:*",
-        "@promethean-os/legacy": "workspace:*",
         "@promethean-os/logger": "workspace:*",
         "@types/javascript-time-ago": "^2.5.0",
         "@types/unist": "^3.0.3",
