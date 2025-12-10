@@ -26,7 +26,7 @@ export type Cache<T = unknown> = Readonly<{
     ) => Promise<void>;
 
     /** lazy iterator over non-expired entries (namespaced) */
-    entries: (opts?: Readonly<{ limit?: number }>) => AsyncGenerator<[string, T]>;
+    entries: (opts?: Readonly<{ limit?: number; namespace?: string }>) => AsyncGenerator<[string, T]>;
 
     /** delete expired keys; returns count deleted */
     sweepExpired: () => Promise<number>;
@@ -147,7 +147,8 @@ const createBatch =
 
 const createEntries = <T>(db: LevelLike<string, Envelope<T>>, state: CacheScopeState): Cache<T>['entries'] =>
     async function* entries(opts = {}) {
-        const prefix = state.namespace ? `${state.namespace}\u241F` : '';
+        const ns = opts.namespace ?? state.namespace;
+        const prefix = ns ? `${ns}\u241F` : '';
         const iteratorOptions: IteratorOptions<string, Envelope<T>> = {
             gte: prefix,
             lt: prefix ? `${prefix}\uFFFF` : undefined,

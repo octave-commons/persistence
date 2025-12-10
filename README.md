@@ -1,10 +1,8 @@
 <!-- READMEFLOW:BEGIN -->
+
 # @promethean-os/persistence
 
-
-
 [TOC]
-
 
 ## Install
 
@@ -15,24 +13,34 @@ pnpm -w add -D @promethean-os/persistence
 ## Quickstart
 
 ```ts
-// usage example
+import { openLevelCache, openLmdbCache } from '@promethean-os/persistence';
+
+const levelCache = await openLevelCache({ path: '.cache/level' });
+const lmdbCache = openLmdbCache({ path: '.cache/lmdb' });
 ```
+
+## Caches
+
+-   Unified entrypoint: import caches from `@promethean-os/persistence`.
+-   Exported factories: `openLevelCache`, `openLmdbCache`.
+-   Exported types: `LevelCache`, `LevelCacheOptions`, `LevelPutOptions`, `LevelMillis`, `LmdbCache`, `LmdbCacheOptions`, `LmdbPutOptions`, `LmdbMillis`, `LmdbCacheStats`.
+-   Deprecation: `@promethean-os/level-cache` and `@promethean-os/lmdb-cache` are thin re-exports and will be removed in a future release; use persistence directly for new code.
+-   Choosing backends: prefer LevelDB for lightweight/local setups; use LMDB when higher concurrency or compression is needed.
 
 ## Commands
 
-- `build`
-- `clean`
-- `typecheck`
-- `test`
-- `lint`
-- `lisp`
-- `coverage`
-- `format`
+-   `build`
+-   `clean`
+-   `typecheck`
+-   `test`
+-   `lint`
+-   `lisp`
+-   `coverage`
+-   `format`
 
 ## License
 
 GPL-3.0-only
-
 
 ### Package graph
 
@@ -56,6 +64,5 @@ flowchart LR
   classDef focal fill:#fdf6b2,stroke:#222,stroke-width:2px;
   class _promethean_os_persistence focal;
 ```
-
 
 <!-- READMEFLOW:END -->
