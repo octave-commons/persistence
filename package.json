@@ -41,6 +41,8 @@
         "express": "^4.19.2",
         "gray-matter": "^4.0.3",
         "javascript-time-ago": "^2.5.11",
+        "level": "^10.0.0",
+        "lmdb": "^3.4.4",
         "mongodb": "^6.18.0",
         "ollama": "^0.5.17",
         "prom-client": "^15.1.0",
@@ -67,6 +69,5 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/riatzukiza/persistence.git"
-    },
-    "peerDependencies": {}
+    }
 }
